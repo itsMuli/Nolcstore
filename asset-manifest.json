@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Nolcstore/static/css/main.09ac7cda.css",
+    "main.js": "/Nolcstore/static/js/main.8a55c518.js",
+    "static/js/453.419a5d54.chunk.js": "/Nolcstore/static/js/453.419a5d54.chunk.js",
+    "index.html": "/Nolcstore/index.html",
+    "main.09ac7cda.css.map": "/Nolcstore/static/css/main.09ac7cda.css.map",
+    "main.8a55c518.js.map": "/Nolcstore/static/js/main.8a55c518.js.map",
+    "453.419a5d54.chunk.js.map": "/Nolcstore/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09ac7cda.css",
+    "static/js/main.8a55c518.js"
+  ]
+}

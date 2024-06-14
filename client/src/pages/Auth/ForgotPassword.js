@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
-import Layout from '../../components/Layout/Layout'
-import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import "./../../styles/AuthStyles.css"
+import { useNavigate } from 'react-router-dom';
+import Layout from '../../components/Layout/Layout';
+import instance from '../axiosInstance';
+import "./../../styles/AuthStyles.css";
 
 
 const ForgotPassword = () => {
@@ -19,7 +19,7 @@ const ForgotPassword = () => {
         e.preventDefault();
         try {
             
-            const res = await axios.post('/api/v1/auth/forgot-password', { 
+            const res = await instance.post('/api/v1/auth/forgot-password', { 
                 email, 
                 newPassword,
                 answer

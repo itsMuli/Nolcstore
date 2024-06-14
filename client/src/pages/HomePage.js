@@ -1,5 +1,4 @@
 import { Checkbox, Radio } from 'antd';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
@@ -7,6 +6,7 @@ import { Prices } from '../components/Prices';
 import { useCart } from '../context/cart';
 import toast from 'react-hot-toast';
 import '../styles/Homepage.css'
+import instance from './axiosInstance';
 
 const HomePage = () => {
   const navigate = useNavigate()
@@ -21,7 +21,7 @@ const HomePage = () => {
 
   const getAllCategory = async () => {
     try {
-      const { data } = await axios.get("/api/v1/category/get-category");
+      const { data } = await instance.get("/api/v1/category/get-category");
       if (data?.success) {
         setCategories(data?.category);
       }
@@ -38,7 +38,7 @@ const HomePage = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/v1/product/product-list/${page}`);
+      const { data } = await instance.get(`/api/v1/product/product-list/${page}`);
       setLoading(false);
       setProducts(data.products);
     } catch (error) {
@@ -49,7 +49,7 @@ const HomePage = () => {
 
   const getTotal = async () => {
     try {
-      const { data } = await axios.get("/api/v1/product/product-count");
+      const { data } = await instance.get("/api/v1/product/product-count");
       setTotal(data?.total);
     } catch (error) {
       console.log(error);
@@ -64,7 +64,7 @@ const HomePage = () => {
   const loadMore = async () => {
     try {
       setLoading(true);
-      const {data} = await axios.get(`/api/v1/product/product-list/${page}`)
+      const {data} = await instance.get(`/api/v1/product/product-list/${page}`)
       setLoading(false)
       setProducts([...products, ...data?.products])
     } catch(error){
@@ -93,7 +93,7 @@ const HomePage = () => {
 
   const filterProduct = async () => {
     try {
-      const { data } = await axios.post("/api/v1/product/product-filters", {
+      const { data } = await instance.post("/api/v1/product/product-filters", {
         checked,
         radio,
       });

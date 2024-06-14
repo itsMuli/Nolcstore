@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Layout from "./../components/Layout/Layout";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
-import "../styles/ProductDetailsStyles.css";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCart } from "../context/cart";
+import "../styles/ProductDetailsStyles.css";
+import Layout from "./../components/Layout/Layout";
+import instance from "./axiosInstance";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -20,7 +20,7 @@ const ProductDetails = () => {
   //getProduct
   const getProduct = async () => {
     try {
-      const { data } = await axios.get(
+      const { data } = await instance.get(
         `/api/v1/product/get-product/${params.slug}`
       );
       setProduct(data?.product);
@@ -32,7 +32,7 @@ const ProductDetails = () => {
   //get similar product
   const getSimilarProduct = async (pid, cid) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await instance.get(
         `/api/v1/product/related-product/${pid}/${cid}`
       );
       setRelatedProducts(data?.products);
